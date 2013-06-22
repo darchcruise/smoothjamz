@@ -1,1 +1,1 @@
-# hey girl
+puts "Hey girl. What's your name?"
