@@ -1,25 +1,25 @@
 require_relative 'animal'
 
-# module Wizard
-#   def magic
-#     puts "magic!"
-#   end
-# end
+# Inheritance
+
+# Person inherits the Animal methods
+# so we can call Animals's sleep method
+# p = Person.new("Sam")
+# p.sleep => "zzz"
 
 class Person < Animal
-  # include Wizard
-  # @@ class variable
+  # The double At symbol is for class variables
   @@person_count = 0
 
   def initialize(name)
-    super
-    # instance variable
+    super # calls the initialize method of the parent class Animal
     puts "Making a person"
-    @stomach = {}
+    # Generate a random age between 1 and 100
+    # A range converted to an array, then sampled
     @age = (1..100).to_a.sample
     @brain_health = 100
+    # increment the class variable when we instantiate a new person object
     @@person_count += 1
-    @portfolios = {}
     puts "There are #{@@person_count} people"
   end
 
@@ -33,14 +33,14 @@ class Person < Animal
   end
 
   def sleep
-    super
+    super # Calls Animal's sleep function so "zzz" will be printed
     @brain_health += 1
   end
 end
 
 class Creep < Person
   def initialize
-    super
-    puts "I'm a creep. creeping on you."
+    super # Calls the Person class's initialize method
+    puts "This one is a creep"
   end
 end
